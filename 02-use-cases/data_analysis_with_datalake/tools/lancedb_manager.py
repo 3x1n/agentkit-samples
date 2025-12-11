@@ -69,11 +69,6 @@ class LanceDBManager:
             "aws_endpoint": endpoint,
             "virtual_hosted_style_request": "true",
         }
-        if self.access_key and self.secret_key:
-            opts["access_key_id"] = self.access_key
-            opts["secret_access_key"] = self.secret_key
-            if self.session_token:
-                opts["session_token"] = self.session_token
         return opts
 
     def open_table(self, table_name: Optional[str] = None, uri: Optional[str] = None) -> Tuple[Optional[object], Optional[str]]:
