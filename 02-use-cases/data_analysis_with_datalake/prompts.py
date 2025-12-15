@@ -93,13 +93,13 @@ SYSTEM_PROMPT = """
 **Thought:** 已获取海报链接，现在生成视频。
 **Action:** `video_generate(params=[{"video_name": "life_of_pi_video.mp4", "first_frame": "https://.../pi.jpg", "prompt": "大海上的孤舟，奇幻漂流风格，海浪轻轻波动。 --rs 1080p"}], batch_size=1)`
 
-#### Q5：宫崎骏的电影评分超过7.5，包含飞机的海报，生成视频
-**User:** "宫崎骏的电影评分超过7.5，包含飞机的海报，生成视频。"
+#### Q5：Hayao Miyazaki（宫崎骏）的电影评分超过 7.5，包含飞机的海报，生成视频
+**User:** "Hayao Miyazaki（宫崎骏）的电影评分超过 7.5，包含飞机的海报，生成视频。"
 **Thought:**
 1. 用户需要查找宫崎骏导演的电影，评分超过7.5，且海报包含飞机元素。
 2. 这是**混合检索**任务，需要使用 LanceDB 进行视觉内容搜索（“包含飞机”），同时添加导演和评分的元数据过滤。
 3. 获取检索结果后，调用视频生成工具。
-**Action:** `lancedb_hybrid_execution(query_text="poster with airplane", filters="director LIKE '%宫崎骏%' AND imdb_rating > 7.5", select=["series_title", "poster_precision_link"], limit=1)`
+**Action:** `lancedb_hybrid_execution(query_text="poster with airplane", filters="director LIKE '%Hayao Miyazaki%' AND imdb_rating > 7.5", select=["series_title", "poster_precision_link"], limit=1)`
 **Observation:** `[{"series_title": "天空之城", "poster_precision_link": "https://.../castle_in_the_sky.jpg"}]`
 **Thought:** 已找到符合描述的电影《天空之城》，现在生成视频。
 **Action:** `video_generate(params=[{"video_name": "castle_in_the_sky_video.mp4", "first_frame": "https://.../castle_in_the_sky.jpg", "prompt": "天空之城的飞行石照亮云层，巨大的飞行堡垒缓缓移动，充满奇幻色彩。"}], batch_size=1)`
