@@ -24,7 +24,7 @@
 ## Agent Identity 解决方案
 
 Agent Identity 专为解决上述问题设计，它不是简单的 OAuth 包装，而是为智能体构建的一套完整的**身份治理基础设施**。
-![alt text](image.png)
+![alt text](images/image.png)
 Agent Identity 把“用户 → 应用 → Agent → 资源”的链路拆开治理，并提供一套可复用的安全构件：
 
 - **Inbound 认证**：对接企业现有 IdP（用户池 / OAuth / SSO 等），让“谁能调用 Agent”可配置、可审计。
@@ -38,6 +38,7 @@ Agent Identity 把“用户 → 应用 → Agent → 资源”的链路拆开治
 |------|------|------|
 | **实验1: 用户池认证** | 使用用户池管控智能体访问 (Inbound 认证) | [tutorial-1-userpool-inbound](./tutorial-1-userpool-inbound/) |
 | **实验2: 飞书联合登录** | 使用飞书账号作为企业身份源 (IdP 集成) | [tutorial-2-feishu-idp](./tutorial-2-feishu-idp/) |
+| **实验3: 飞书文档访问** | 凭证托管实现安全访问飞书文档 (Outbound 凭证托管) | [tutorial-3-feishu-outbound](./tutorial-3-feishu-outbound/) |
 
 ## 核心功能
 
@@ -55,13 +56,19 @@ identity/
 │   ├── README.md                       # 教程文档
 │   ├── main.py                         # 示例代码
 │   ├── pyproject.toml                  # 依赖配置
-│   ├── .env.template                   # 环境变量模板
+│   ├── .env.example                   # 环境变量模板
 │   └── assets/                         # 截图和流程图
-└── tutorial-2-feishu-idp/              # 实验2: 飞书 IdP 联合登录
+├── tutorial-2-feishu-idp/              # 实验2: 飞书 IdP 联合登录
+│   ├── README.md
+│   ├── main.py
+│   ├── pyproject.toml
+│   ├── .env.example
+│   └── assets/
+└── tutorial-3-feishu-outbound/         # 实验3: Outbound 凭证托管 (进阶)
     ├── README.md
     ├── main.py
     ├── pyproject.toml
-    ├── .env.template
+    ├── .env.example
     └── assets/
 ```
 
@@ -86,7 +93,7 @@ cd agentkit-samples/01-tutorials/identity
 cd tutorial-1-userpool-inbound  # 或其他实验
 
 # 3. 配置环境变量
-cp .env.template .env
+cp .env.example .env
 # 编辑 .env 填写配置
 
 # 4. 安装依赖
